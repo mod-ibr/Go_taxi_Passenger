@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
 
+import '../../../Core/Utils/Functions/animated_navigation.dart';
 import '../../../Core/Widgets/loading_widget.dart';
 import '../../../home_view.dart';
 import 'loginView/login_view.dart';
@@ -21,17 +22,15 @@ class HomeViewOrAuthView extends StatelessWidget {
           Future.delayed(
             Duration.zero,
             () {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (_) => const HomeView()),
-                  (route) => false);
+              AnimatedNavigation()
+                  .navigate(widget: const HomeView(), context: context);
             },
           );
         } else if (state is NotLoggedInState) {
           // Schedule navigation to occur after the widget tree has finished building
           Future.delayed(Duration.zero, () {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (_) => const LogInView()),
-                (route) => false);
+            AnimatedNavigation()
+                .navigate(widget: const LogInView(), context: context);
           });
         }
         return const LoadingWidget();

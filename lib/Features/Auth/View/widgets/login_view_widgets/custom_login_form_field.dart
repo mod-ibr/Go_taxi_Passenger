@@ -5,6 +5,7 @@ import 'package:taxi/Core/Utils/Functions/awesome_dialog_message.dart';
 import 'package:taxi/Features/Auth/Model/auth_model.dart';
 import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
 
+import '../../../../../Core/Utils/Functions/animated_navigation.dart';
 import '../../../../../Core/Widgets/loading_widget.dart';
 import '../../../../../home_view.dart';
 import '../../signUpView/signup_view.dart';
@@ -62,9 +63,8 @@ class _CustomLogInFormFieldState extends State<CustomLogInFormField> {
               .showSuccessAwesomeDialog(
                   message: 'logged in successfully', context: context)
               .then((value) {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (_) => const HomeView()),
-                (route) => false);
+            AnimatedNavigation()
+                .navigate(widget: const HomeView(), context: context);
           });
         } else if (state is ErrorAuthState) {
           AwesomeDialogMessage()
@@ -178,9 +178,8 @@ class _CustomLogInFormFieldState extends State<CustomLogInFormField> {
               SizedBox(width: widget.width * 0.03),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (_) => const SignUpView()),
-                      (route) => false);
+                  AnimatedNavigation()
+                      .navigate(widget: const SignUpView(), context: context);
                 },
                 child: const CustomText(
                   text: 'sign up here',

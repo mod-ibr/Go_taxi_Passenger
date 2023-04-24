@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taxi/Core/Utils/Functions/animated_navigation.dart';
 import 'package:taxi/Core/Utils/Functions/awesome_dialog_message.dart';
 import 'package:taxi/Features/Auth/View/loginView/login_view.dart';
 import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
@@ -16,9 +17,8 @@ class HomeView extends StatelessWidget {
               .showSuccessAwesomeDialog(
                   message: 'logged out successfully', context: context)
               .then((value) {
-            Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (_) => const LogInView()),
-                (route) => false);
+            AnimatedNavigation()
+                .navigate(widget: const LogInView(), context: context);
           });
         }
       },
