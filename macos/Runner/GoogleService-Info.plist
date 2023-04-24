@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>230905539569-s1g3jkaht0ls43tffg2jr2gtf7217s3j.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.230905539569-s1g3jkaht0ls43tffg2jr2gtf7217s3j</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>230905539569-u4d673f5lulu695vrpdjkgin2n0fem5c.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDy19tJmN7aTvlCQJTTa0BlwpPx1xanMWk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>230905539569</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.taxi</string>
+	<key>PROJECT_ID</key>
+	<string>my-uber-d147e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>my-uber-d147e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:230905539569:ios:2fc7379fc472e4c1507250</string>
+	<key>DATABASE_URL</key>
+	<string>https://my-uber-d147e-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
