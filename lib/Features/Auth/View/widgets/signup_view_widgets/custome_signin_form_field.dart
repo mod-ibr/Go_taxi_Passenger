@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:taxi/Core/Utils/Functions/awesome_dialog_message.dart';
 import 'package:taxi/Features/Auth/Model/auth_model.dart';
 import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
-import '../../../../../Core/Utils/Functions/snackbar_message.dart';
 import '../../../../../Core/Widgets/loading_widget.dart';
 import '../../../../../home_view.dart';
 
@@ -56,11 +56,19 @@ class _CustomeSignUpFormFieldState extends State<CustomeSignUpFormField> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SucceededAuthState) {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const HomeView()));
+          AwesomeDialogMessage()
+              .showSuccessAwesomeDialog(
+                  message: 'logged in successfully', context: context)
+              .then((value) {
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (_) => const HomeView(),
+                ),
+                (route) => false);
+          });
         } else if (state is ErrorAuthState) {
-          SnackBarMessage()
-              .showErrorSnackBar(message: state.message, context: context);
+          AwesomeDialogMessage()
+              .showErrorAwesomeDialog(message: state.message, context: context);
         }
       },
       builder: (context, state) {
@@ -183,9 +191,9 @@ class _CustomeSignUpFormFieldState extends State<CustomeSignUpFormField> {
               SizedBox(width: widget.width * 0.03),
               InkWell(
                 onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const LogInView(),
-                  ));
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => const LogInView()),
+                      (route) => false);
                 },
                 child: const CustomText(
                   text: 'Log in here',

@@ -50,10 +50,11 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.forward();
     Timer(const Duration(seconds: AuthConstants.kSplashScreenDurationInSecond),
         () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomeViewOrAuthView()),
-      );
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (_) => const HomeViewOrAuthView(),
+          ),
+          (route) => false);
     });
   }
 

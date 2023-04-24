@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,17 +18,20 @@ class HomeViewOrAuthView extends StatelessWidget {
           return const LoadingWidget();
         } else if (state is LoggedInState) {
           // Schedule navigation to occur after the widget tree has finished building
-          Future.delayed(Duration.zero, () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const HomeView(),
-            ));
-          });
+          Future.delayed(
+            Duration.zero,
+            () {
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (_) => const HomeView()),
+                  (route) => false);
+            },
+          );
         } else if (state is NotLoggedInState) {
           // Schedule navigation to occur after the widget tree has finished building
           Future.delayed(Duration.zero, () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const LogInView(),
-            ));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (_) => const LogInView()),
+                (route) => false);
           });
         }
         return const LoadingWidget();
