@@ -10,13 +10,14 @@ class CustomText extends StatelessWidget {
   final FontWeight fontWeight;
   final String fontFamily;
 
-  const CustomText({super.key, 
+  const CustomText({
+    super.key,
     this.text = '',
     this.fontSize = 16,
     this.color = Colors.black,
     this.alignment = Alignment.topLeft,
     this.fontWeight = FontWeight.normal,
-    this.fontFamily = 'Ubuntu-Regular',
+    this.fontFamily = 'Ubuntu',
     this.maxLine,
     this.height = 1,
   });

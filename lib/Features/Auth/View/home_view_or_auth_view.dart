@@ -5,7 +5,7 @@ import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
 
 import '../../../Core/Utils/Functions/animated_navigation.dart';
 import '../../../Core/Widgets/loading_widget.dart';
-import '../../../home_view.dart';
+import '../../Maps/View/MapsView/maps_home_view.dart';
 import 'loginView/login_view.dart';
 
 class HomeViewOrAuthView extends StatelessWidget {
@@ -23,7 +23,7 @@ class HomeViewOrAuthView extends StatelessWidget {
             Duration.zero,
             () {
               AnimatedNavigation()
-                  .navigate(widget: const HomeView(), context: context);
+                  .navigate(widget: const MapsHomeView(), context: context);
             },
           );
         } else if (state is NotLoggedInState) {

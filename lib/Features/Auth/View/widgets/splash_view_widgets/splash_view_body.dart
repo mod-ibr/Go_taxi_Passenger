@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../authWidgets/go_taxi_logo.dart';
+import '../../../../../Core/Widgets/go_taxi_logo.dart';
 
 class SplashViewWBody extends StatelessWidget {
   final double width, height;

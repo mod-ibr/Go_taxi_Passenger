@@ -4,16 +4,16 @@ import 'package:taxi/Features/Auth/Model/auth_model.dart';
 import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
 import '../../../../../Core/Utils/Functions/animated_navigation.dart';
 import '../../../../../Core/Widgets/loading_widget.dart';
-import '../../../../../home_view.dart';
+import '../../../../Maps/View/MapsView/maps_home_view.dart';
 
 import '../../loginView/login_view.dart';
-import '../../widgets/authWidgets/custom_button.dart';
-import '../../widgets/authWidgets/custom_text.dart';
-import '../../widgets/authWidgets/custom_text_form_field.dart';
+import '../../../../../Core/Widgets/custom_button.dart';
+import '../../../../../Core/Widgets/custom_text.dart';
+import '../../../../../Core/Widgets/custom_text_form_field.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../authWidgets/logo_widget.dart';
+import '../../../../../Core/Widgets/logo_widget.dart';
 
 // ignore: must_be_immutable
 class CustomeSignUpFormField extends StatefulWidget {
@@ -62,7 +62,7 @@ class _CustomeSignUpFormFieldState extends State<CustomeSignUpFormField> {
                   message: 'logged in successfully', context: context)
               .then((value) {
             AnimatedNavigation()
-                .navigate(widget: const HomeView(), context: context);
+                .navigate(widget: const MapsHomeView(), context: context);
           });
         } else if (state is ErrorAuthState) {
           AwesomeDialogMessage()
