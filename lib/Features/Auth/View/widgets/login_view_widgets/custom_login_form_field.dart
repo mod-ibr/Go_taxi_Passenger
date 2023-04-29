@@ -3,11 +3,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi/Core/Utils/Functions/awesome_dialog_message.dart';
 import 'package:taxi/Features/Auth/Model/auth_model.dart';
-import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
 
 import '../../../../../Core/Utils/Functions/animated_navigation.dart';
 import '../../../../../Core/Widgets/loading_widget.dart';
 import '../../../../Maps/View/MapsView/maps_home_view.dart';
+ import '../../../ViewModel/cubit/auth_cubit.dart';
 import '../../signUpView/signup_view.dart';
 import '../../../../../Core/Widgets/custom_button.dart';
 import '../../../../../Core/Widgets/custom_button_social_and_logo.dart';

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
-
+ 
 import '../../../Core/Utils/Functions/animated_navigation.dart';
 import '../../../Core/Widgets/loading_widget.dart';
 import '../../Maps/View/MapsView/maps_home_view.dart';
+import '../ViewModel/cubit/auth_cubit.dart';
 import 'loginView/login_view.dart';
 
 class HomeViewOrAuthView extends StatelessWidget {

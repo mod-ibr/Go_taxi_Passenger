@@ -1,12 +1,19 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi/Core/Widgets/loading_widget.dart';
+import 'package:taxi/Features/Maps/View/Widgets/MapsHomeViewWidgets/loc_perm_denied_widget.dart';
 
 import '../../../../../Core/Utils/Constants/color_constants.dart';
 import '../../../../../Core/Widgets/custom_text.dart';
 import '../../../../../Core/Widgets/divider.dart';
+import '../../../ViewModel/MapsCubit/maps_cubit.dart';
 
+int counter = 0;
+
+// ignore: must_be_immutable
 class MapsHomeViewBody extends StatelessWidget {
   final double width, height;
   final GlobalKey<ScaffoldState> globalKey;
@@ -15,15 +22,17 @@ class MapsHomeViewBody extends StatelessWidget {
       required this.width,
       required this.height,
       required this.globalKey});
+
 //--------FOR MAPS-------------
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
+
+  late GoogleMapController googleMapController;
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );
-
   // -----------------------------
   @override
   Widget build(BuildContext context) {
@@ -40,14 +49,39 @@ class MapsHomeViewBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Expanded(
-          child: GoogleMap(
-            mapType: MapType.hybrid,
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _controller.complete(controller);
-            },
-          ),
+        BlocBuilder<MapsCubit, MapsState>(
+          builder: (context, state) {
+            if (state is SucceededUpdateCameraPositionState) {
+              googleMapController.animateCamera(
+                  CameraUpdate.newCameraPosition(state.cameraPosition));
+            } else if (state is LoadingCurrentPostionState) {
+              return const LoadingWidget();
+            } else if (state is ErrorUpdateCameraPositionState) {
+              return Expanded(
+                child: LocPermDenied(width: width, height: height),
+              );
+            } else if (state is RefreshState) {}
+            return Expanded(
+              child: GoogleMap(
+                mapType: MapType.normal,
+                myLocationButtonEnabled: true,
+                myLocationEnabled: true,
+                zoomGesturesEnabled: true,
+                zoomControlsEnabled: true,
+                initialCameraPosition: _kGooglePlex,
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                  googleMapController = controller;
+
+                  BlocProvider.of<MapsCubit>(context).setUpPositionLocator();
+                  if (state is SucceededUpdateCameraPositionState) {
+                    googleMapController.animateCamera(
+                        CameraUpdate.newCameraPosition(state.cameraPosition));
+                  }
+                },
+              ),
+            );
+          },
         ),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
@@ -170,8 +204,11 @@ class MapsHomeViewBody extends StatelessWidget {
           ),
           child: const CircleAvatar(
             radius: 20,
-            backgroundColor: ColorConstants.buttonColor1,
-            child: Icon(Icons.menu),
+            backgroundColor: ColorConstants.backGroundColor1,
+            child: Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
           ),
         ),
       ),

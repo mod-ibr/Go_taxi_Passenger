@@ -40,22 +40,19 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^8.1.2
   flutter_facebook_auth: ^3.5.0
+  geolocator: ^9.0.2
   get_it: ^7.2.0
-  google_maps_flutter: ^2.2.5
   google_sign_in: null
   internet_connection_checker: ^1.0.0+1
   intl_phone_field: ^3.1.0
   page_transition: null
+  permission_handler: ^10.2.0
   pin_code_fields: ^7.3.0
   shared_preferences: ^2.0.18
+  google_maps_flutter: ^2.2.5
 
+  
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter

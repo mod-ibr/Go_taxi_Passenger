@@ -12,4 +12,7 @@ abstract class ErrorsStrings {
       'Wrong password provided for that user.';
 
   static String faceBookLogInFailureMessage = 'Facebook login failed.';
+  static String camPosLocNotFoundFailureMessage = 'No Saved Locations';
+  static String camPosLocErrorFailureMessage =
+      "Can't get your Location, check your GPS";
 }

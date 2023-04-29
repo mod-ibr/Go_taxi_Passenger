@@ -32,7 +32,7 @@ class MapsHomeViewDrawer extends StatelessWidget {
 
   Widget _drawerHeader() {
     return SizedBox(
-      height: height * 0.2,
+      height: height * 0.25,
       child: DrawerHeader(
         decoration: const BoxDecoration(
           boxShadow: [BoxShadow(blurRadius: 15, offset: Offset(0.7, 0.7))],

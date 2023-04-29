@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi/Core/Utils/Constants/color_constants.dart';
-import 'package:taxi/Features/Auth/ViewModel/cubit/auth_cubit.dart';
 
 import '../../../../Core/Utils/Constants/auth_constants.dart';
 import '../../../../Core/Utils/Functions/animated_navigation.dart';
+ import '../../ViewModel/cubit/auth_cubit.dart';
 import '../home_view_or_auth_view.dart';
 import '../widgets/splash_view_widgets/splash_view_body.dart';
 
